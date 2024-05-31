@@ -5,30 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { PokemonData } from '../interfaces/pokemon';
 
-interface PokemonData {
-  name:                     string;
-  sprites:                  Sprites;
-  stats:                    Stat[];
-  types:                    Type[];
-}
-export interface Species {
-  name: string;
-  url:  string;
-}
-export interface Sprites {
-  front_default:      string;
-}
-export interface Stat {
-  base_stat: number;
-  effort:    number;
-  stat:      Species;
-}
-
-export interface Type {
-  slot: number;
-  type: Species;
-}
 
 
 export function Home() {
