@@ -1,4 +1,4 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavButton } from '../routes/NavButton';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,17 +6,13 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { PokemonData } from '../interfaces/pokemon';
-
-
+import { fetchPokemon } from '../services/pokemonService';
 
 export function Home() {
   const [data, setData] = useState<PokemonData | null>(null);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_ENDPOINT_URL)
-      .then(response => response.json())
-      .then(setData)
-      .catch(console.error);
+    fetchPokemon(setData);
   }, []);
 
   return (
@@ -57,4 +53,3 @@ export function Home() {
     </>
   );
 }
-
