@@ -1,7 +1,10 @@
 import { PokemonData } from "../interfaces/pokemon";
-export function fetchPokemon(setData: (data: PokemonData | null) => void) {
-    fetch(import.meta.env.VITE_ENDPOINT_URL)
-      .then(response => response.json())
-      .then(setData)
-      .catch(console.error);
+export async function fetchPokemon(setData: (data: PokemonData | null) => void) {
+  try {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL);
+    const data = await response.json();
+    setData(data);
+  } catch (error) {
+    console.error(error);
   }
+}
