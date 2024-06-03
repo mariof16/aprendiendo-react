@@ -1,54 +1,132 @@
-import { useState } from 'react';
-import { Typography, TextField, Button } from '@mui/material';
+import { Box, Typography, TextField, InputAdornment, IconButton, Button } from '@mui/material';
 import { NavButton } from '../routes/NavButton';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import colors from '../styles/colors.theme';
+import { CardLogin } from './ComponentesLogin';
 
 export function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [correct, setCorrect] = useState('');
-
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Evitar que se recargue la página al enviar el formulario
-    setError('');
-    setCorrect('');
-
-    // Validaciones simples
-    if (username === '' || password === '') {
-      setError('Por favor, introduce nombre de usuario y contraseña.');
-    } else if (username !== 'usuario' || password !== 'contraseña') {
-      setError('Nombre de usuario o contraseña incorrectos.');
-    } else {
-      // Aquí iría la lógica para autenticar al usuario
-      setCorrect('Login correcto');
-      // Redirigir al usuario a la página de inicio
-    }
-  };
-
   return (
     <>
-      <Typography variant="h2" sx={{ fontWeight: 'bold', marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}>Login</Typography>
       <NavButton text="Home" href="/home" />
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <TextField
-          label="Nombre de usuario"
-          variant="outlined"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{ marginBottom: '10px' }}
-        />
-        <TextField
-          label="Contraseña"
-          variant="outlined"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ marginBottom: '10px' }}
-        />
-        <Typography variant="body2" color="error" style={{ marginBottom: '10px' }}>{error}</Typography>
-        <Typography variant="body2" color="green" style={{ marginBottom: '10px' }}>{correct}</Typography>
-        <Button variant="contained" color="primary" type="submit">Iniciar sesión</Button>
-      </form>
+      <CardLogin>
+        <Box sx={{ padding: "7px" }}>
+          <Box
+            component="img"
+            src="../../public/logologin.png"
+            alt="User Photo"
+            sx={{
+              width: 81,
+              height: 80,
+              mb: 2,
+              display: 'block',
+              margin: 'auto',
+            }}
+          />
+          <Box sx={{ marginTop: '20px' }}>
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily: 'Lato',
+                fontSize: '32px',
+                fontWeight: 400,
+                lineHeight: '48px',
+                letterSpacing: '0.14000000059604645px',
+                textAlign: 'center',
+                color: colors.text.primary,
+              }}
+            >
+              Bienvenid@ a
+            </Typography>
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily: 'Lato',
+                fontSize: '32px',
+                fontWeight: 700,
+                lineHeight: '48px',
+                letterSpacing: '0.14000000059604645px',
+                textAlign: 'center',
+                color: colors.yellow,
+              }}
+            >
+              neoTOOLS{' '}
+              <Box
+                component="span"
+                style={{
+                  fontFamily: 'Lato',
+                  fontSize: '26px',
+                  fontWeight: 700,
+                  lineHeight: '39px',
+                  letterSpacing: '0.14000000059604645px',
+                  textAlign: 'center',
+                  color: colors.grey[500],
+                }}
+              >
+                by neoCK
+              </Box>
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{marginTop:"20px"}}>
+          <TextField
+            variant="outlined"
+            size="medium"
+            fullWidth
+            label="Email"
+            placeholder="email@ejemplo.es"
+            InputLabelProps={{ shrink: true }}
+          />
+          <TextField
+            variant="outlined"
+            size="medium"
+            fullWidth
+            label="Contraseña"
+            placeholder="************"
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    edge="end"
+                  >
+                    <VisibilityIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Box>
+        <Typography
+              variant="h4"
+              style={{
+                fontFamily: 'Lato',
+                fontSize: '16px',
+                fontWeight: 400,
+                lineHeight: '16px',
+                letterSpacing: '0.14000000059604645px',
+                textAlign: 'center',
+                textDecoration:"underline",
+                marginTop:"30px",
+                color: colors.primary.main,
+              }}
+            >
+              ¿Has olvidado tu contraseña?
+        </Typography>
+        <Box sx={{ textAlign: 'center', marginTop: '50px' }}>
+          <Button
+            size="large"
+            color="primary"
+            disabled={false}
+            variant="contained"
+            startIcon={null}
+            endIcon={null}
+          >
+            INICIAR SESIÓN
+          </Button>
+        </Box>
+      </CardLogin>
     </>
   );
 }
+
