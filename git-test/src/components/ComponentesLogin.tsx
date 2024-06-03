@@ -93,8 +93,8 @@ export const InputMail = () => (
           fontSize: "1.5vw"
         },
         "& .MuiInputLabel-root": {
-          fontFamily: "Arial", // Cambia la fuente del label
-          fontSize: "1.2vw" // Cambia el tamaño de la fuente del label
+          fontFamily: "Arial",
+          fontSize: "1.2vw"
         }
       }}
       variant="outlined"
@@ -142,13 +142,13 @@ export const ForgotPassword = () => (
         variant="h4"
         sx={{
         fontFamily: 'Lato',
-        fontSize: '1.3vw', // Escala el tamaño de la fuente
+        fontSize: '1.3vw',
         fontWeight: 400,
-        lineHeight: '2vw', // Escala la altura de línea
+        lineHeight: '2vw',
         letterSpacing: '0.14000000059604645px',
         textAlign: 'center',
         textDecoration: "underline",
-        marginTop: "3vh", // Escala el margen superior
+        marginTop: "3vh",
         color: colors.primary.main,
         }}
     >
@@ -162,10 +162,10 @@ export const LoginButton = () => (
       color="primary"
       variant="contained"
       sx={{
-        width: "15vw", // Ajusta el ancho del botón
-        height: "8vh", // Ajusta la altura del botón
-        fontSize: "1vw", // Ajusta el tamaño de la fuente del botón
-        marginTop: "3vh" // Ajusta el margen superior del botón
+        width: "15vw",
+        height: "8vh",
+        fontSize: "1vw",
+        marginTop: "3vh"
       }}
     >
       INICIAR SESIÓN
