@@ -1,11 +1,26 @@
 import { Box,InputAdornment,IconButton} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { NavButton } from '../routes/NavButton';
+import { useState } from 'react';
 import { CardLogin,InputMail,BoxByNeock ,TypographyBienvenido,TypographyNeoTools,InputPassword, ForgotPassword, LoginButton} from './ComponentesLogin.styles.tsx';
 
-
-
 export const Login: React.FC = () => {
+  
+  const [user, setUser] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const handleUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser(event.target.value);
+  }
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  }
+
+  const handleLogin = () => {
+    console.log(user)
+    console.log(password)
+  }
   return (
     <>
       <NavButton text="Home" href="/home" />
@@ -39,6 +54,8 @@ export const Login: React.FC = () => {
           <InputMail
             variant="outlined"
             label="Email"
+            value={user}
+            onChange={handleUser}
             placeholder="email@ejemplo.es"
             InputLabelProps={{ shrink: true }}
           />
@@ -47,6 +64,7 @@ export const Login: React.FC = () => {
             variant="outlined"
             size="medium"
             fullWidth
+            onChange={handlePassword}
             label="Contraseña"
             placeholder="************"
             InputLabelProps={{ shrink: true }}
@@ -71,6 +89,7 @@ export const Login: React.FC = () => {
             size="large"
             color="primary"
             variant="contained"
+            onClick={handleLogin}
           > 
             INICIAR SESIÓN
           </LoginButton>
