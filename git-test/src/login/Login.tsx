@@ -1,8 +1,10 @@
 import { Box,InputAdornment,IconButton} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { NavButton } from '../routes/NavButton';
+import { NavButton } from '../routes/NavButton.tsx';
 import { useState } from 'react';
 import { CardLogin,InputMail,BoxByNeock ,TypographyBienvenido,TypographyNeoTools,InputPassword, ForgotPassword, LoginButton} from './ComponentesLogin.styles.tsx';
+
+/*Poner la logica del login, mandar los datos del correo y la contraseña en el body, hacer el fetch y guardar la respuesta en el local storage (El access token)*/
 
 export const Login: React.FC = () => {
   
@@ -26,9 +28,10 @@ export const Login: React.FC = () => {
         },
         body: JSON.stringify({ user, password }),
       })
-      console.log(response)
+      const data = await response.json();
+      localStorage.setItem('accessToken', data.access_token);
     }catch(error){
-      console.log("error en el login", error);
+      console.log("Error", error);
     }
    
   }

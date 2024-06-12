@@ -4,8 +4,8 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import { Home } from "./components/Home.tsx";
-import { Login } from "./components/Login.tsx";
+import { Home } from "./home/Home.tsx";
+import { Login } from "./login/Login.tsx";
 
 const router = createBrowserRouter([
   {
