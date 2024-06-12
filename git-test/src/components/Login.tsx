@@ -17,9 +17,20 @@ export const Login: React.FC = () => {
     setPassword(event.target.value);
   }
 
-  const handleLogin = () => {
-    console.log(user)
-    console.log(password)
+  const handleLogin = async () => {
+    try{
+      const response = await fetch(import.meta.env.VITE_ENDPOINT_LOGIN, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user, password }),
+      })
+      console.log(response)
+    }catch(error){
+      console.log("error en el login", error);
+    }
+   
   }
   return (
     <>
